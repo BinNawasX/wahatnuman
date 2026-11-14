@@ -412,7 +412,7 @@ function render(){
 render();
 // Count WhatsApp and call taps on Snapchat and Google, so the ads learn who messages, not only who clicks.
 // IDs stay empty until the pixel/tag exists; nothing loads while they are empty.
-var TRACK={snapPixel:'',snapEvent:'SIGN_UP',gads:'AW-18573574383',gadsLabel:'3HyUCMm6sbgdEO-ByZhF'};
+var TRACK={snapPixel:'f185b363-420b-4afc-aea3-3863f62ff061',snapEvent:'SIGN_UP',gads:'AW-18573574383',gadsLabel:'3HyUCMm6sbgdEO-ByZhF'};
 if(TRACK.snapPixel){(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script',r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u)})(window,document,'https://sc-static.net/scevent.min.js');snaptr('init',TRACK.snapPixel);snaptr('track','PAGE_VIEW')}
 if(TRACK.gads){var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+TRACK.gads;document.head.appendChild(gs);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',TRACK.gads)}
 function tapped(how,href,e){
