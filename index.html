@@ -290,6 +290,9 @@ var P=[
  ['bedroom','غرفة النوم','inside'],
  ['kitchen','المطبخ','inside']
 ];
+// ?p=pool / ?p=majlis / ?p=garden on the ad link: the page opens on the same kind of photo the ad showed
+var PA=(new URLSearchParams(location.search).get('p')||'').toLowerCase();
+if(PA)P=P.filter(function(p){return p[2]===PA}).concat(P.filter(function(p){return p[2]!==PA}));
 var G=[['pool','المسبح'],['majlis','المجالس والجلسات'],['garden','الحديقة والسهرة'],['inside','الداخل']];
 var $=function(id){return document.getElementById(id)};
 function center(box,el){var a=el.getBoundingClientRect(),b=box.getBoundingClientRect();box.scrollBy({left:(a.left+a.width/2)-(b.left+b.width/2),behavior:'smooth'})}
@@ -407,6 +410,20 @@ function render(){
   else{w.hidden=true;$('picked').textContent='ما اخترت يوم بعد، تقدر تراسلنا مباشرة'}
 }
 render();
+// Count WhatsApp and call taps on Snapchat and Google, so the ads learn who messages, not only who clicks.
+// IDs stay empty until the pixel/tag exists; nothing loads while they are empty.
+var TRACK={snapPixel:'',snapEvent:'SIGN_UP',gads:'AW-18573574383',gadsLabel:'3HyUCMm6sbgdEO-ByZhF'};
+if(TRACK.snapPixel){(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script',r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u)})(window,document,'https://sc-static.net/scevent.min.js');snaptr('init',TRACK.snapPixel);snaptr('track','PAGE_VIEW')}
+if(TRACK.gads){var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+TRACK.gads;document.head.appendChild(gs);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',TRACK.gads)}
+function tapped(how,href,e){
+  if(!TRACK.snapPixel&&!TRACK.gads)return;
+  try{if(TRACK.snapPixel)snaptr('track',TRACK.snapEvent,{description:how})}catch(x){}
+  try{if(TRACK.gads&&TRACK.gadsLabel)gtag('event','conversion',{send_to:TRACK.gads+'/'+TRACK.gadsLabel,transport_type:'beacon',event_label:how})}catch(x){}
+  // give the tags a moment to send before WhatsApp or the dialler takes over the screen
+  if(e){e.preventDefault();setTimeout(function(){location.href=href},350)}
+}
+$('wa').addEventListener('click',function(e){tapped('whatsapp',this.href,e)});
+document.querySelector('.call').addEventListener('click',function(e){tapped('call',this.href,e)});
 // Facts from the owner. Leave null until confirmed; nothing shows for a null value. Never guess.
 var FACTS={priceFrom:null,checkin:null,checkout:null,maxGuests:null};
 var items=[];
