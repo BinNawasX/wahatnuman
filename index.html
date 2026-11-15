@@ -404,9 +404,10 @@ var SEEN=SRC==='snap'?'شفت إعلانكم في سناب':(SRC==='google'?'ش�
 function msg(){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(picked?' يوم '+picked:'، وش الأيام المتاحة؟')}
 // Share with family (decisions are made as a group)
 var SHARE_URL='https://binnawasx.github.io/wahatnuman/';
+// Short line only (Hussam, 15 Nov: "just say check out this estraha")
 $('share').onclick=function(){
-  var t='شف هالاستراحة في وادي نعمان، فيها مسبح داخلي وجلسات حلوة';
-  if(navigator.share){navigator.share({title:'واحة نعمان',text:t,url:SHARE_URL}).catch(function(){})}
+  var t='شوف هالاستراحة';
+  if(navigator.share){navigator.share({text:t,url:SHARE_URL}).catch(function(){})}
   else{window.open('https://wa.me/?text='+encodeURIComponent(t+'\n'+SHARE_URL),'_blank')}
 };
 function render(){
