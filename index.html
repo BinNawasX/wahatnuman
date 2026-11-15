@@ -398,9 +398,10 @@ days.addEventListener('click',function(e){
   b.classList.add('on');b.setAttribute('aria-selected','true');center(days,b);
   picked=b.dataset.full||null;render();
 });
-// Where the visitor came from (?src=snap or ?src=google on the ad link), so each booking is traced to its ad
+// Where the visitor came from, so each booking message tells which ad brought it:
+// ?src=snap (Snapchat), ?src=google (Google search), ?src=gdg (Google picture ads on YouTube, Discover, Gmail)
 var SRC=(new URLSearchParams(location.search).get('src')||'').toLowerCase();
-var SEEN=SRC==='snap'?'شفت إعلانكم في سناب':(SRC==='google'?'شفت إعلانكم في قوقل':'شفت موقعكم');
+var SEEN={snap:'شفت إعلانكم في سناب',google:'شفت إعلانكم في قوقل',gdg:'شفت إعلانكم'}[SRC]||'شفت موقعكم';
 function msg(){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(picked?' يوم '+picked:'، وش الأيام المتاحة؟')}
 // Share with family (decisions are made as a group)
 var SHARE_URL='https://binnawasx.github.io/wahatnuman/';
