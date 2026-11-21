@@ -179,6 +179,30 @@ footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
 .vbar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
 .vbar .count{background:rgba(255,255,255,.12)}
 @media (min-width:700px){body{max-width:520px;margin:0 auto;box-shadow:0 0 80px rgba(0,0,0,.6)}.dock,.sheet,.viewer{max-width:520px;margin:0 auto}}
+
+/* Calendar */
+.cal{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 10px 10px;margin-bottom:12px}
+.cal h3{font-family:"El Messiri";font-size:19px;font-weight:600;color:var(--gold2);padding:0 6px 8px}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.wd{text-align:center;font-size:12px;font-weight:700;color:var(--muted);padding-bottom:2px}
+.wd.we{color:var(--gold2)}
+.c{aspect-ratio:1/1.08;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.1;border:1.5px solid transparent}
+.c .n{font-family:"El Messiri";font-size:19px;font-weight:700}
+.c .s{font-size:10px;font-weight:800;margin-top:2px}
+.c.past{color:#4a4134}
+.c.free{background:#0f2418;border-color:#1f6b3d;color:#eafff1}
+.c.free .s{color:#4be38a}
+.c.br.free{border-color:var(--gold)}
+.c.bk{background:#1b1712;color:#6f6556}
+.c.bk .n{text-decoration:line-through}
+.c.bk .s{color:#8a7f6e}
+.c.on{background:var(--wa);border-color:var(--wa);color:#05290f}
+.c.on .s{color:#05290f}
+.lg{display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--muted);margin:0 2px 4px}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-inline-end:6px;vertical-align:-1px}
+.lg .a{background:#0f2418;border:1.5px solid #1f6b3d}.lg .b{background:#1b1712;border:1.5px solid #3a3226}.lg .r{border:1.5px solid var(--gold)}
+.wa.off{background:#3a3328;color:#d9cdb8;box-shadow:none}
+.wa.off svg{fill:#d9cdb8}
 </style>
 </head>
 <body>
@@ -207,11 +231,11 @@ footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
 
 <section id="pick">
   <h2>اختر يومك</h2>
-  <p class="sub">نكتبه لك في رسالة واتساب ونأكد لك إذا كان متاح</p>
+  <p class="sub">الأيام الخضراء متاحة. اضغط على يومك وبعدها زر واتساب</p>
   <p class="breaknote" id="breaknote" hidden></p>
-  <div class="days" id="days" role="listbox" aria-label="الأيام"></div>
-  <div class="legend"><span><i class="lw"></i>نهاية الأسبوع (الخميس والجمعة)</span><span><i class="lb"></i>إجازة الخريف</span></div>
-  <p class="picked" id="picked">ما اخترت يوم بعد، تقدر تراسلنا مباشرة</p>
+  <div class="lg"><span><i class="a"></i>متاح</span><span><i class="b"></i>محجوز</span><span><i class="r"></i>إجازة الخريف</span></div>
+  <div id="cals"></div>
+  <p class="picked" id="picked"></p>
 </section>
 
 <section>
@@ -242,7 +266,7 @@ footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
 <section>
   <h2>كيف أحجز؟</h2>
   <p class="sub">بدون تطبيقات وبدون تسجيل</p>
-  <div class="steps"><div>اختر يومك من فوق</div><div>اضغط «احجز على واتساب»</div><div>نأكد لك اليوم ونثبت الحجز</div></div>
+  <div class="steps"><div>اختر يومك من الأيام المتاحة</div><div>اضغط «احجز على واتساب»</div><div>نأكد لك اليوم ونثبت الحجز</div></div>
 </section>
 
 <section>
@@ -371,32 +395,40 @@ var MN=['يناير','فبراير','مارس','أبريل','مايو','يوني
 var now=new Date(Date.now()+3*3600*1000);
 var base=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
 var days=$('days'),picked=null;
-// Real bookings only, from the owner (YYYY-MM-DD). Never mark a free day as booked.
-var BOOKED=[];
+
 var BREAK_START=Date.UTC(2026,10,20),BREAK_END=Date.UTC(2026,10,28);
 function isBreak(d){var t=d.getTime();return t>=BREAK_START&&t<=BREAK_END}
 function iso(d){return d.toISOString().slice(0,10)}
-for(var k=0;k<21;k++){
-  var d=new Date(base+k*86400000);
-  var name=k===0?'اليوم':(k===1?'بكرة':DN[d.getUTCDay()]);
-  var full=DN[d.getUTCDay()]+' '+d.getUTCDate()+' '+MN[d.getUTCMonth()];
-  var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=isBreak(d),bk=BOOKED.indexOf(iso(d))>-1;
-  var b=document.createElement('button');b.className='day'+(br?' br':(wk?' wk':''))+(bk?' full':'');b.setAttribute('role','option');b.dataset.full=full;
-  if(bk){b.disabled=true;b.setAttribute('aria-disabled','true')}
-  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(bk?'<span class="tag x">محجوز</span>':(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':'')));
-  days.appendChild(b);
+// Real bookings only, from the owner (YYYY-MM-DD). Never mark a free day as booked.
+var BOOKED=[];
+var WD=['أحد','اثنين','ثلاثاء','أربعاء','خميس','جمعة','سبت'];
+var last=base+44*86400000,cals=$('cals');
+for(var m=0;m<2;m++){
+  var first=new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()+m,1));
+  var box=document.createElement('div');box.className='cal';
+  var h='<h3>'+MN[first.getUTCMonth()]+' '+first.getUTCFullYear()+'</h3><div class="grid">';
+  WD.forEach(function(w,i){h+='<div class="wd'+(i===4||i===5?' we':'')+'">'+w+'</div>'});
+  for(var p=0;p<first.getUTCDay();p++)h+='<div></div>';
+  var dim=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth()+1,0)).getUTCDate();
+  for(var dd=1;dd<=dim;dd++){
+    var d=new Date(Date.UTC(first.getUTCFullYear(),first.getUTCMonth(),dd)),t=d.getTime();
+    var full=DN[d.getUTCDay()]+' '+dd+' '+MN[d.getUTCMonth()];
+    if(t<base||t>last){h+='<div class="c past"><span class="n">'+dd+'</span></div>';continue}
+    var bk=BOOKED.indexOf(iso(d))>-1;
+    h+=bk?'<div class="c bk"><span class="n">'+dd+'</span><span class="s">محجوز</span></div>'
+        :'<button class="c free'+(isBreak(d)?' br':'')+'" data-full="'+full+'"><span class="n">'+dd+'</span><span class="s">متاح</span></button>';
+  }
+  box.innerHTML=h+'</div>';cals.appendChild(box);
 }
 // Break countdown (true dates only)
 var left=Math.round((BREAK_START-base)/86400000),bn=$('breaknote');
 if(left>1){bn.innerHTML='إجازة الخريف تبدأ <b>الجمعة 20 نوفمبر</b>، بعد '+(left<=10?left+' أيام':left+' يوم')+'. احجز يومك بدري';bn.hidden=false}
 else if(left===1){bn.innerHTML='إجازة الخريف تبدأ <b>بكرة</b>. احجز يومك الحين';bn.hidden=false}
 else if(base<=BREAK_END){bn.innerHTML='إجازة الخريف <b>الحين</b> لين السبت 28 نوفمبر';bn.hidden=false}
-var none=document.createElement('button');none.className='day none';none.textContent='ما حددت اليوم';none.dataset.full='';days.appendChild(none);
-days.addEventListener('click',function(e){
-  var b=e.target.closest('.day');if(!b||b.disabled)return;
-  [].forEach.call(days.children,function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});
-  b.classList.add('on');b.setAttribute('aria-selected','true');center(days,b);
-  picked=b.dataset.full||null;render();
+cals.addEventListener('click',function(e){
+  var b=e.target.closest('.c.free');if(!b)return;
+  [].forEach.call(cals.querySelectorAll('.c.on'),function(x){x.classList.remove('on')});
+  b.classList.add('on');picked=b.dataset.full;render();
 });
 // Where the visitor came from, so each booking message tells which ad brought it:
 // ?src=snap (Snapchat), ?src=google (Google search), ?src=gdg (Google picture ads on YouTube, Discover, Gmail)
@@ -412,10 +444,9 @@ $('share').onclick=function(){
   else{window.open('https://wa.me/?text='+encodeURIComponent(t+'\n'+SHARE_URL),'_blank')}
 };
 function render(){
-  $('wa').href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg());
-  var w=$('waday');
-  if(picked){w.hidden=false;w.textContent=picked;$('picked').innerHTML='اخترت <b>'+picked+'</b>، اضغط زر واتساب تحت'}
-  else{w.hidden=true;$('picked').textContent='ما اخترت يوم بعد، تقدر تراسلنا مباشرة'}
+  var wa=$('wa'),w=$('waday'),lbl=wa.querySelector('.t b');
+  if(picked){wa.classList.remove('off');wa.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg());lbl.textContent='احجز على واتساب';w.hidden=false;w.textContent=picked;$('picked').innerHTML='اخترت <b>'+picked+'</b>، اضغط زر واتساب تحت'}
+  else{wa.classList.add('off');wa.href='#pick';lbl.textContent='اختر يومك أول';w.hidden=false;w.textContent='من الأيام المتاحة فوق';$('picked').textContent=''}
 }
 render();
 // Count WhatsApp and call taps on Snapchat and Google, so the ads learn who messages, not only who clicks.
@@ -430,7 +461,7 @@ function tapped(how){
   try{if(TRACK.snapPixel)snaptr('track',TRACK.snapEvent,{description:how})}catch(x){}
   try{if(TRACK.gads&&TRACK.gadsLabel)gtag('event','conversion',{send_to:TRACK.gads+'/'+TRACK.gadsLabel,transport_type:'beacon',event_label:how})}catch(x){}
 }
-$('wa').addEventListener('click',function(){tapped('whatsapp')});
+$('wa').addEventListener('click',function(){if(!this.classList.contains('off'))tapped('whatsapp')});
 document.querySelector('.call').addEventListener('click',function(){tapped('call')});
 // Facts from the owner. Leave null until confirmed; nothing shows for a null value. Never guess.
 var FACTS={priceFrom:null,checkin:null,checkout:null,maxGuests:null};
