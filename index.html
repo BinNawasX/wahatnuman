@@ -213,10 +213,10 @@ footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
 
 <section id="pick">
   <h2>اختر يومك</h2>
-  <p class="sub">اسحب وشوف الأيام المتاحة، واضغط على يومك وبعدها زر واتساب</p>
+  <p class="sub">اسحب واختر يومك، وبعدها اضغط زر واتساب</p>
   <p class="breaknote" id="breaknote" hidden></p>
   <div class="days" id="days" role="listbox" aria-label="الأيام"></div>
-  <div class="legend"><span><i class="la"></i>متاح</span><span><i class="lx"></i>محجوز</span><span><i class="lb"></i>إجازة الخريف</span></div>
+  <div class="legend"><span><i class="lw"></i>نهاية الأسبوع (الخميس والجمعة)</span><span><i class="lb"></i>إجازة الخريف</span></div>
   <p class="picked" id="picked"></p>
 </section>
 
@@ -248,7 +248,7 @@ footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
 <section>
   <h2>كيف أحجز؟</h2>
   <p class="sub">بدون تطبيقات وبدون تسجيل</p>
-  <div class="steps"><div>اختر يومك من الأيام المتاحة</div><div>اضغط «احجز على واتساب»</div><div>نأكد لك اليوم ونثبت الحجز</div></div>
+  <div class="steps"><div>اختر يومك من فوق</div><div>اضغط «احجز على واتساب»</div><div>نأكد لك اليوم ونثبت الحجز</div></div>
 </section>
 
 <section>
@@ -387,9 +387,9 @@ for(var k=0;k<41;k++){
   var name=k===0?'اليوم':(k===1?'بكرة':DN[d.getUTCDay()]);
   var full=DN[d.getUTCDay()]+' '+d.getUTCDate()+' '+MN[d.getUTCMonth()];
   var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=isBreak(d),bk=BOOKED.indexOf(iso(d))>-1;
-  var b=document.createElement('button');b.className='day'+(br?' br':(wk?' wk':''))+(bk?' full':' free');b.setAttribute('role','option');b.dataset.full=full;
+  var b=document.createElement('button');b.className='day'+(br?' br':(wk?' wk':''))+(bk?' full':'');b.setAttribute('role','option');b.dataset.full=full;
   if(bk){b.disabled=true;b.setAttribute('aria-disabled','true')}
-  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(bk?'<span class="tag x">محجوز</span>':'<span class="tag ok">متاح</span>');
+  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(bk?'<span class="tag x">محجوز</span>':(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':'')));
   days.appendChild(b);
 }
 // Break countdown (true dates only)
@@ -419,7 +419,7 @@ $('share').onclick=function(){
 function render(){
   var wa=$('wa'),w=$('waday'),lbl=wa.querySelector('.t b');w.hidden=false;
   if(picked){wa.classList.remove('off');wa.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg());lbl.textContent='احجز على واتساب';w.textContent=picked;$('picked').innerHTML='اخترت <b>'+picked+'</b>، اضغط زر واتساب تحت'}
-  else{wa.classList.add('off');wa.href='#pick';lbl.textContent='اختر يومك أول';w.textContent='من الأيام المتاحة فوق';$('picked').textContent=''}
+  else{wa.classList.add('off');wa.href='#pick';lbl.textContent='اختر يومك أول';w.textContent='من الأيام فوق';$('picked').textContent=''}
 }
 render();
 // Count WhatsApp and call taps on Snapchat and Google, so the ads learn who messages, not only who clicks.
