@@ -40,7 +40,7 @@
   --chip:#2b251c; --amen-bg:#1a1611; --am-icon:#c9a45c; --eyebrow:#c9a45c; --foot-line:rgba(255,255,255,.12); color-scheme:dark}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -172,6 +172,11 @@ footer .brand{font-size:24px}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 
+/* WhatsApp buttons stay grey until a day is picked */
+.btn.off{background:#8f8676!important;color:#fff!important;box-shadow:none!important}
+.days.flash .day{animation:flash 1s ease}
+@keyframes flash{30%{border-color:var(--wa);box-shadow:0 0 0 2px var(--wa) inset}}
+@media (prefers-reduced-motion:reduce){.days.flash .day{animation:none}}
 /* prices */
 .prices{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
 .price{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
@@ -195,6 +200,9 @@ footer .brand{font-size:24px}
 .day .tag.w{color:var(--ink);background:none;border:1px solid var(--outline)}
 .day.on{border-color:var(--wa);box-shadow:0 0 0 2px var(--wa) inset}
 .day.on .n{color:var(--wa)}
+.day.full{opacity:.5;cursor:not-allowed}
+.day.full .n{text-decoration:line-through}
+.day .tag.x{background:var(--chip);color:var(--muted)}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--muted)}
 .legend i{display:inline-block;width:11px;height:11px;border-radius:4px;margin-inline-end:6px;vertical-align:-1px}
 .legend .lw{border:1.5px solid var(--outline)}.legend .lb{background:var(--gold)}
@@ -449,14 +457,16 @@ var DN=['الأحد','الاثنين','الثلاثاء','الأربعاء','ا�
 var MN=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 var now=new Date(Date.now()+3*3600*1000),base=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
 var days=$('days'),picked=null;
+// Real bookings only, from the owner (YYYY-MM-DD). Never mark a free day as booked.
+var BOOKED=[];
 var BREAK_START=Date.UTC(2026,10,20),BREAK_END=Date.UTC(2026,10,28);
 for(var k=0;k<41;k++){
   var d=new Date(base+k*86400000),t=d.getTime();
   var name=k===0?'اليوم':(k===1?'بكرة':DN[d.getUTCDay()]);
   var full=DN[d.getUTCDay()]+' '+d.getUTCDate()+' '+MN[d.getUTCMonth()];
-  var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=t>=BREAK_START&&t<=BREAK_END;
-  var b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('role','option');b.dataset.full=full;
-  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':''));
+  var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=t>=BREAK_START&&t<=BREAK_END,bk=BOOKED.indexOf(d.toISOString().slice(0,10))>-1;
+  var b=document.createElement('button');b.type='button';b.className='day'+(bk?' full':'');if(bk){b.disabled=true;b.setAttribute('aria-disabled','true')}b.setAttribute('role','option');b.dataset.full=full;
+  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(bk?'<span class="tag x">محجوز</span>':(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':'')));
   days.appendChild(b);
 }
 var left=Math.round((BREAK_START-base)/86400000),bn=$('breaknote');
@@ -464,21 +474,26 @@ if(left>1){bn.innerHTML='إجازة الخريف تبدأ <b>الجمعة 20 ن�
 else if(left===1){bn.innerHTML='إجازة الخريف تبدأ <b>بكرة</b>، احجز يومك الحين';bn.hidden=false}
 else if(base<=BREAK_END){bn.innerHTML='إجازة الخريف <b>الحين</b> لين السبت 28 نوفمبر';bn.hidden=false}
 days.addEventListener('click',function(e){
-  var b=e.target.closest('.day');if(!b)return;
-  var again=b.classList.contains('on');
+  var b=e.target.closest('.day');if(!b||b.disabled)return;
   [].forEach.call(days.children,function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});
-  picked=again?null:b.dataset.full;
-  if(!again){b.classList.add('on');b.setAttribute('aria-selected','true')}
-  $('picked').innerHTML=picked?'اخترت <b>'+picked+'</b>، اضغط زر واتساب':'';
+  b.classList.add('on');b.setAttribute('aria-selected','true');picked=b.dataset.full;
+  $('picked').innerHTML='اخترت <b>'+picked+'</b>، اضغط زر واتساب';
   setLinks();
 });
 
-/* WhatsApp: same message as before, plus the day and the section when chosen.
+/* WhatsApp: no message without a day (the owner does not want "which days are free?" messages).
+   Until a day is picked every booking button is grey, says «اختر يومك أول» and scrolls to the days.
    ?src=snap (Snapchat), ?src=google (Google search), ?src=gdg (Google picture ads) tells which ad brought the booking */
 var SRC=(Q.get('src')||'').toLowerCase();
 var SEEN={snap:'شفت إعلانكم في سناب',google:'شفت إعلانكم في قوقل',gdg:'شفت إعلانكم'}[SRC]||'شفت موقعكم';
-function msg(part){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(part?' ('+part+')':'')+(picked?' يوم '+picked:'، وش الأيام المتاحة؟')}
-function setLinks(){[].forEach.call(document.querySelectorAll('[data-wa]'),function(a){a.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg(a.dataset.wa))})}
+function msg(part){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(part?' ('+part+')':'')+' يوم '+picked}
+function setLinks(){[].forEach.call(document.querySelectorAll('[data-wa]'),function(a){
+  var t=a.querySelector('span')||a;if(!a.dataset.label)a.dataset.label=t.textContent;
+  if(picked){a.classList.remove('off');a.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg(a.dataset.wa));t.textContent=a.dataset.label}
+  else{a.classList.add('off');a.href='#pick';t.textContent='اختر يومك أول'}
+})}
+document.addEventListener('click',function(e){var a=e.target.closest('[data-wa].off');if(!a)return;e.preventDefault();
+  $('pick').scrollIntoView({behavior:'smooth',block:'start'});days.classList.remove('flash');void days.offsetWidth;days.classList.add('flash')});
 setLinks();
 
 /* Share with family (decisions are made as a group) */
@@ -499,7 +514,7 @@ function tapped(how){
   try{if(TRACK.gads&&TRACK.gadsLabel)gtag('event','conversion',{send_to:TRACK.gads+'/'+TRACK.gadsLabel,transport_type:'beacon',event_label:how})}catch(x){}
 }
 document.addEventListener('click',function(e){
-  if(e.target.closest('[data-wa]'))tapped('whatsapp');
+  if(e.target.closest('[data-wa]:not(.off)'))tapped('whatsapp');
   else if(e.target.closest('[data-call]'))tapped('call');
 });
 
