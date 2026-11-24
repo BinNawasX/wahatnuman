@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>واحة نعمان | استراحة بمسبح داخلي في وادي نعمان</title>
-<meta name="description" content="استراحة خاصة من قسمين بمسبح داخلي، مجلس خارجي، فرن حطب وألعاب أطفال. وادي نعمان على طريق مكة الطائف، 22 دقيقة من العوالي. اختر يومك واحجز على واتساب">
-<meta name="theme-color" content="#0d0b08">
+<meta name="description" content="استراحة خاصة من قسمين بمسبح داخلي، مجلس خارجي، فرن حطب وألعاب أطفال. وادي نعمان على طريق مكة الطائف، 22 دقيقة من العوالي. احجز على واتساب">
+<meta name="theme-color" content="#14110d">
 <meta property="og:type" content="website">
 <meta property="og:title" content="واحة نعمان | استراحة بمسبح داخلي">
-<meta property="og:description" content="وادي نعمان، طريق مكة الطائف. 22 دقيقة من العوالي. اختر يومك واحجز على واتساب">
+<meta property="og:description" content="وادي نعمان، طريق مكة الطائف. 22 دقيقة من العوالي. احجز على واتساب">
 <meta property="og:image" content="https://binnawasx.github.io/wahatnuman/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -16,435 +16,503 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/palm-night.jpg">
+<link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/pool-night.jpg">
 <style>
-:root{--bg:#0d0b08;--card:#17130e;--line:#2a2218;--gold:#d8b26a;--gold2:#f0d9a4;--text:#f3ede2;--muted:#b9ab94;--wa:#25d366}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-html,body{overflow-x:hidden}
-body{background:var(--bg);color:var(--text);font-family:Tajawal,system-ui,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
-img{display:block;width:100%;height:100%;object-fit:cover}
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:root{
+  --sand:#f6f0e6; --sand-2:#efe6d6; --card:#fffdf9; --ink:#1f1a14; --muted:#6d6254;
+  --night:#14110d; --night-2:#1e1a14; --line:rgba(31,26,20,.12);
+  --terra:#b5562f; --terra-d:#93421f; --gold:#c9a45c; --palm:#2f5d50; --wa:#1fa855;
+  --r:18px; --shadow:0 10px 30px rgba(31,26,20,.12);
+  --head:"El Messiri",system-ui,sans-serif; --body:"IBM Plex Sans Arabic",system-ui,sans-serif;
+  --btn-bg:#1f1a14; --btn-fg:#fff; --on-ink:#fff; --outline:#1f1a14; --chip:#f6f0e6;
+  --amen-bg:#efe6d6; --am-icon:#b5562f; --eyebrow:#b5562f; --foot-line:transparent;
+  color-scheme:light;
+}
+/* dark: same tokens, night values (the night photos glow on it) */
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sand:#14110d; --sand-2:#1d1913; --card:#221d16; --ink:#f3ece0; --muted:#b3a794; --line:rgba(255,255,255,.12);
+  --shadow:0 10px 30px rgba(0,0,0,.45); --btn-bg:#c9a45c; --btn-fg:#14110d; --on-ink:#14110d; --outline:rgba(243,236,224,.45);
+  --chip:#2b251c; --amen-bg:#1a1611; --am-icon:#c9a45c; --eyebrow:#c9a45c; --foot-line:rgba(255,255,255,.12); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sand:#14110d; --sand-2:#1d1913; --card:#221d16; --ink:#f3ece0; --muted:#b3a794; --line:rgba(255,255,255,.12);
+  --shadow:0 10px 30px rgba(0,0,0,.45); --btn-bg:#c9a45c; --btn-fg:#14110d; --on-ink:#14110d; --outline:rgba(243,236,224,.45);
+  --chip:#2b251c; --amen-bg:#1a1611; --am-icon:#c9a45c; --eyebrow:#c9a45c; --foot-line:rgba(255,255,255,.12); color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%}
 a{color:inherit}
+h1,h2,h3{font-family:var(--head);line-height:1.25;margin:0 0 .4em}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.eyebrow{font-family:var(--head);color:var(--eyebrow);font-weight:600;letter-spacing:.02em;font-size:15px;margin-bottom:.4em;display:block}
+section{padding:88px 0}
+.sec-head{max-width:640px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(28px,4vw,42px)}
+.sec-head p{color:var(--muted);margin:0}
+.fp{object-fit:cover;object-position:var(--fx,50%) var(--fy,50%);width:100%;height:100%}
 
-/* Gallery hero */
-.hero{position:relative;height:64svh;min-height:430px;max-height:720px;background:#000}
-.track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
-.track::-webkit-scrollbar{display:none}
-.slide{flex:0 0 100%;height:100%;scroll-snap-align:center;position:relative}
-.slide img{object-position:50% 50%}
-.hero::before{content:"";position:absolute;inset:0 0 auto;height:120px;z-index:1;pointer-events:none;background:linear-gradient(rgba(13,11,8,.7),transparent)}
-.hero::after{content:"";position:absolute;inset:auto 0 0;height:110px;z-index:1;pointer-events:none;background:linear-gradient(transparent,rgba(13,11,8,.85))}
-.top{position:absolute;top:0;inset-inline:0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:16px 18px}
-.logo{font-family:"El Messiri";font-weight:700;font-size:24px;color:var(--gold2);line-height:1.2}
-.logo small{display:block;font-family:Tajawal;font-weight:500;font-size:11.5px;color:#e4dccd}
-.allbtn{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:700;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(240,217,164,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 13px;border-radius:99px}
-.allbtn svg{width:17px;height:17px;stroke:var(--gold2);fill:none;stroke-width:2}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:99px;background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4}
-.arrow.next{left:12px}.arrow.prev{right:12px}
-.meta{position:absolute;bottom:14px;inset-inline:16px;z-index:3;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-.cap{font-weight:700;font-size:16px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
-.count{direction:ltr;font-size:13.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.55);padding:4px 11px;border-radius:99px}
-.hint{position:absolute;bottom:56px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:#fff;background:rgba(0,0,0,.5);padding:6px 14px;border-radius:99px;pointer-events:none;transition:opacity .4s}
-.hint svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;animation:nudge 1.2s ease-in-out infinite}
-@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(-6px)}}
-.hint.gone{opacity:0}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--body);padding:16px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-wa{background:var(--wa);color:#fff;box-shadow:0 8px 24px rgba(31,168,85,.35)}
+.btn-wa:hover{background:#18924a}
+.btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.45);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.24)}
+.btn-dark{background:var(--btn-bg);color:var(--btn-fg)}
+.btn-dark:hover{filter:brightness(1.12)}
+.btn-line{background:transparent;border:1.5px solid var(--outline);color:var(--ink)}
+.btn svg{width:20px;height:20px;flex:none}
 
-/* Thumbnails */
-.thumbs{display:flex;gap:8px;overflow-x:auto;padding:12px 16px 4px;scrollbar-width:none}
-.thumbs::-webkit-scrollbar{display:none}
-.thumbs button{flex:0 0 58px;height:58px;border-radius:12px;overflow:hidden;opacity:.55;border:2px solid transparent;transition:opacity .2s,border-color .2s}
-.thumbs button.on{opacity:1;border-color:var(--gold)}
+/* header */
+.top{position:fixed;inset-inline:0;top:0;padding-top:env(safe-area-inset-top,0px);z-index:40;transition:background .3s,box-shadow .3s}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{font-family:var(--head);font-weight:700;font-size:26px;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+.brand-mark{width:34px;height:34px;border-radius:50%;background:var(--terra);display:grid;place-items:center}
+.brand-mark svg{width:20px;height:20px}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{color:#fff;text-decoration:none;font-weight:500;opacity:.9}
+.nav a:hover{opacity:1}
+.lang,.theme{background:transparent;line-height:1;border:1px solid rgba(255,255,255,.5);color:#fff;border-radius:999px;padding:7px 14px;font:600 14px var(--body);cursor:pointer}
+.top.solid{background:rgba(20,17,13,.92);backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.top .btn{padding:11px 18px;font-size:15px}
+@media (max-width:900px){.nav a:not(.keep){display:none}.top .btn{display:none}}
 
-/* Intro */
-.intro{padding:22px 20px 6px}
-.eyebrow{color:var(--gold);font-size:14.5px;font-weight:500;display:flex;gap:8px;align-items:center}
-.eyebrow::before{content:"";width:22px;height:1px;background:var(--gold)}
-h1{font-family:"El Messiri";font-weight:700;font-size:36px;line-height:1.3;margin:8px 0 10px;color:#fff}
-h1 span{color:var(--gold2)}
-.intro p{color:#e4dccd;font-size:16.5px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.chips span{border:1px solid #3a2f20;background:var(--card);border-radius:99px;padding:5px 12px;font-size:14px;font-weight:500;color:var(--gold2)}
+/* hero */
+.hero{position:relative;height:100svh;min-height:600px;max-height:980px;color:#fff;overflow:hidden;background:var(--night)}
+.slides,.slide{position:absolute;inset:0}
+.slide{opacity:0;transition:opacity .6s ease}
+.slide.on{opacity:1}
+.slide img{transform:scale(1.04);transition:transform 2.6s linear}
+.slide.on img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.55) 0%,rgba(10,8,6,0) 28%,rgba(10,8,6,.15) 50%,rgba(10,8,6,.88) 100%);pointer-events:none}
+.hero-in{position:absolute;inset-inline:0;bottom:0;z-index:2;padding-bottom:clamp(36px,7vh,80px)}
+.hero h1{font-size:clamp(38px,6.4vw,76px);margin-bottom:.2em;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+/* one headline per photo, stacked in the same spot so the layout never jumps */
+.hero-lines{display:grid}
+.hero-lines span{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.hero-lines span.on{opacity:1;transform:none}
+.hero p.lead{font-size:clamp(17px,2vw,21px);max-width:620px;opacity:.95;margin:0 0 26px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.dots{position:absolute;z-index:3;top:50%;inset-inline-end:20px;display:flex;flex-direction:column;gap:10px;transform:translateY(-50%)}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.45);padding:0;cursor:pointer}
+.dots button.on{background:#fff;height:26px;border-radius:6px}
+@media (max-width:700px){.dots{display:none}.hero h1{font-size:36px}.hero p.lead{display:none}.hero-cta .btn{flex:1 1 0;padding:15px 12px;font-size:15px}.facts{display:none}}
 
-section{padding:36px 20px 6px}
-h2{font-family:"El Messiri";font-weight:600;font-size:27px;line-height:1.3;color:var(--gold2);margin-bottom:4px}
-.sub{color:var(--muted);font-size:15px;margin-bottom:16px}
+/* amenities */
+.amen{background:var(--amen-bg);color:var(--ink)}
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.am{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:flex;align-items:center;gap:12px}
+.am svg{width:26px;height:26px;color:var(--am-icon);flex:none}
+.am b{font-family:var(--head);font-size:18px;font-weight:600;line-height:1.3}
+@media (max-width:900px){.am-grid{grid-template-columns:1fr 1fr}}
 
-/* Date picker */
-.days{display:flex;gap:9px;overflow-x:auto;margin:0 -20px;padding:2px 20px 10px;scroll-snap-type:x proximity;scrollbar-width:none}
+/* gallery */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tab{border:1.5px solid var(--outline);background:transparent;color:var(--ink);border-radius:999px;padding:9px 18px;font:600 15px var(--body);cursor:pointer}
+.tab.on{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.filter{border:0;background:var(--sand-2);color:var(--muted);border-radius:999px;padding:7px 14px;font:500 14px var(--body);cursor:pointer}
+.filter.on{background:var(--terra);color:#fff}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:190px;grid-auto-flow:dense;gap:8px}
+.tile{position:relative;overflow:hidden;border-radius:14px;cursor:zoom-in;background:var(--sand-2);border:0;padding:0}
+.tile img{transition:transform .7s ease}
+.tile:hover img{transform:scale(1.05)}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile.tall{grid-row:span 2}
+.tile.wide{grid-column:span 2}
+.tile figcaption{position:absolute;inset-inline:0;bottom:0;padding:26px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.65));color:#fff;font-size:14px;text-align:start;opacity:0;transition:opacity .3s}
+.tile:hover figcaption{opacity:1}
+.gal-foot{margin-top:22px;display:flex;justify-content:center}
+@media (max-width:700px){
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:150px;gap:6px}
+  .tile.wide{grid-column:span 2}
+  .tile figcaption{opacity:1;font-size:13px}
+}
+
+/* occasions */
+.occ{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.oc{position:relative;border-radius:22px;overflow:hidden;height:440px;color:#fff}
+.oc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,8,6,.85))}
+.oc div{position:absolute;z-index:2;inset-inline:22px;bottom:22px}
+.oc h3{font-size:26px;margin-bottom:.1em}
+.oc p{margin:0;opacity:.9;font-size:15px}
+@media (max-width:900px){.occ{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}.occ::-webkit-scrollbar{display:none}.oc{scroll-snap-align:start;height:420px}}
+
+/* booking band: one photo, one message, two buttons */
+.book{position:relative;padding:0;min-height:560px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--night)}
+.book>img{position:absolute;inset:0}
+.book::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,.15) 0%,rgba(10,8,6,.35) 45%,rgba(10,8,6,.88) 100%)}
+.book-in{position:relative;z-index:2;padding:120px 0 72px}
+.book-in h2{font-size:clamp(34px,5vw,58px);margin-bottom:.15em}
+.book-in p{font-size:clamp(16px,1.8vw,20px);max-width:560px;opacity:.92;margin:0 0 26px}
+@media (max-width:700px){.book{min-height:520px}.book-in{padding:90px 0 48px}.book-in .hero-cta .btn{flex:1 1 0;padding:15px 12px}}
+
+/* footer + mobile bar */
+footer{border-top:1px solid var(--foot-line);background:var(--night);color:#b9ad9b;padding:48px 0 120px;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+footer .brand{font-size:24px}
+.mbar{position:fixed;inset-inline:0;bottom:0;z-index:45;display:none;gap:10px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(20,17,13,.94);backdrop-filter:blur(10px)}
+.mbar .btn{flex:1;padding:15px}
+.mbar .call{flex:0 0 56px;padding:0;background:#fff;color:#14110d}
+@media (max-width:900px){.mbar{display:flex}.hero-in{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:60;background:#080604;display:none;flex-direction:column;color:#fff}
+.lb.open{display:flex}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font-size:15px}
+.lb-stage{flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:0;touch-action:pan-y}
+.lb-stage img{max-width:min(1400px,100%);max-height:100%;object-fit:contain;user-select:none}
+.lb-cap{text-align:center;padding:12px 16px 22px;opacity:.85}
+.lb button{background:rgba(255,255,255,.12);border:0;color:#fff;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:22px;display:grid;place-items:center}
+.lb .prev,.lb .next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb .prev{inset-inline-start:14px}.lb .next{inset-inline-end:14px}
+@media (max-width:700px){.lb .prev,.lb .next{display:none}}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* prices */
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+.price{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--shadow)}
+.price span{color:var(--muted);font-size:15px}
+.price b{font-family:var(--head);font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.price b small{font-family:var(--body);font-size:16px;color:var(--eyebrow);font-weight:600;margin-inline-start:6px}
+.price .btn{margin-top:auto}
+.share{margin-top:16px;max-width:760px;width:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+.chips li{background:var(--chip);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:14px}
+@media (max-width:520px){.price{padding:18px}.price b{font-size:36px}}
+
+/* days */
+.days{display:flex;gap:9px;overflow-x:auto;padding:2px 2px 12px;scroll-snap-type:x proximity;scrollbar-width:none}
 .days::-webkit-scrollbar{display:none}
-.day{flex:0 0 auto;min-width:78px;scroll-snap-align:start;text-align:center;border:1.5px solid var(--line);background:var(--card);border-radius:16px;padding:9px 10px 8px;line-height:1.35;transition:border-color .15s,background .15s}
-.day b{display:block;font-size:14px;font-weight:700;color:var(--text)}
-.day .n{display:block;font-family:"El Messiri";font-size:25px;font-weight:700;color:#fff;line-height:1.2}
+.day{flex:0 0 auto;min-width:80px;scroll-snap-align:start;text-align:center;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;padding:9px 10px 8px;line-height:1.35;cursor:pointer;font-family:var(--body)}
+.day b{display:block;font-size:14px}
+.day .n{display:block;font-family:var(--head);font-size:26px;font-weight:700;line-height:1.2}
 .day .m{display:block;font-size:12.5px;color:var(--muted)}
-.day .tag{display:block;margin-top:5px;font-size:11px;font-weight:700;color:#1d1405;background:var(--gold);border-radius:99px;padding:1px 6px;white-space:nowrap}
-.day .tag.w{color:var(--gold2);background:none;border:1px solid #6b5430}
-.day.wk{background:#211910;border-color:#4e3c22}
-.day.wk b{color:var(--gold2)}
-.day.br{background:linear-gradient(#33270f,#1c160c);border-color:var(--gold)}
-.day.br b{color:var(--gold2)}
-.legend{display:flex;gap:16px;font-size:13.5px;color:var(--muted);margin:2px 0 0}
-.legend i{display:inline-block;width:11px;height:11px;border-radius:4px;margin-inline-end:6px;vertical-align:-1px}
-.legend .lw{background:#2a2012;border:1.5px solid var(--gold2)}.legend .lb{background:var(--gold)}
-.day.on{border-color:var(--wa);background:#10251a}
+.day .tag{display:block;margin-top:5px;font-size:11px;font-weight:700;border-radius:99px;padding:1px 6px;white-space:nowrap;color:#1d1405;background:var(--gold)}
+.day .tag.w{color:var(--ink);background:none;border:1px solid var(--outline)}
+.day.on{border-color:var(--wa);box-shadow:0 0 0 2px var(--wa) inset}
 .day.on .n{color:var(--wa)}
-.day.none{display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--muted);min-width:96px}
-.breaknote{background:linear-gradient(90deg,#33270f,#1c160c);border:1px solid #6b5430;border-radius:12px;padding:9px 12px;margin:-4px 0 14px;font-size:14.5px;color:#eadfca}
-.breaknote b{color:var(--gold2)}
-.day.full{opacity:.5;background:var(--card);border-color:var(--line);cursor:not-allowed}
-.day.full .n{text-decoration:line-through}
-.day .tag.x{background:#3a3226;color:#cbbfa9}
-.day .tag.ok{color:#4be38a;background:#0f2418;border:1px solid #1f6b3d}
-.day.free{border-color:#1f6b3d}
-.day.br.free{border-color:var(--gold)}
-.legend .la{background:#0f2418;border:1.5px solid #1f6b3d}.legend .lx{background:#3a3226}
-.wa.off{background:#3a3328;color:#d9cdb8;box-shadow:none}
-.wa.off svg{fill:#d9cdb8}
-.share{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:16px;min-height:46px;border:1.5px solid #4a3c27;border-radius:99px;font-weight:700;font-size:15px;color:var(--gold2)}
-.share svg{width:18px;height:18px;stroke:var(--gold2);fill:none;stroke-width:2}
-.picked{margin-top:6px;font-size:15px;color:var(--muted);min-height:26px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13.5px;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:4px;margin-inline-end:6px;vertical-align:-1px}
+.legend .lw{border:1.5px solid var(--outline)}.legend .lb{background:var(--gold)}
+.note{background:var(--chip);border:1px solid var(--line);border-radius:12px;padding:9px 12px;margin:0 0 14px;font-size:15px;max-width:760px}
+.picked{margin:8px 0 0;font-size:15px;color:var(--muted);min-height:26px}
 .picked b{color:var(--wa)}
 
-/* Features */
-.feats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 14px}
-.feat svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.5;margin-bottom:6px}
-.feat b{display:block;font-size:16px}
-.feat span{font-size:13.5px;color:var(--muted)}
-
-/* Areas */
-.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cat{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1/1;text-align:start}
-.cat.big{grid-column:span 2;aspect-ratio:16/9}
-.cat .lbl{position:absolute;bottom:0;inset-inline:0;padding:34px 12px 10px;background:linear-gradient(transparent,rgba(0,0,0,.78));font-weight:700;font-size:16px;color:#fff;line-height:1.35}
-.cat .cnt{position:absolute;top:10px;left:10px;font-weight:700;font-size:12.5px;color:var(--gold2);background:rgba(0,0,0,.55);padding:2px 9px;border-radius:99px}
-
-/* Steps */
-.steps{counter-reset:s;display:grid;gap:10px}
-.steps div{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:13px 14px;display:flex;gap:12px;align-items:center;font-weight:500}
-.steps div::before{content:counter(s);flex:0 0 30px;height:30px;border-radius:99px;background:var(--gold);color:#1d1405;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
-
-.map{flex-wrap:wrap;margin-top:4px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;display:flex;gap:14px;align-items:center;text-decoration:none}
-.map svg{flex:0 0 40px;height:40px;stroke:var(--gold);fill:none;stroke-width:1.5}
-.map b{display:block}
-.map .rate{display:block;color:var(--gold2);font-size:13.5px}
-.map .rate i{font-style:normal;color:#f5c04a}
-.info{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.info div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
-.info span{display:block;font-size:13.5px;color:var(--muted)}
-.info b{display:block;font-size:17px;color:#fff}
-.prices{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.prices div{background:linear-gradient(#2a2010,#17130e);border:1px solid #6b5430;border-radius:16px;padding:12px 14px}
-.prices span{display:block;font-size:13.5px;color:var(--muted)}
-.prices b{display:block;font-family:"El Messiri";font-size:28px;color:#fff;line-height:1.3}
-.prices b small{font-family:Tajawal;font-size:14px;color:var(--gold2);font-weight:700}
-.price-chip{display:inline-block;margin-top:12px;background:var(--card);border:1px solid #4a3c27;border-radius:99px;padding:5px 14px;font-weight:700;color:var(--gold2)}
-.map span{font-size:14px;color:var(--muted)}
-.map em{flex-basis:100%;text-align:center;font-style:normal;color:var(--gold2);font-size:14px;white-space:nowrap;border:1px solid #4a3c27;border-radius:99px;padding:6px 12px}
-.wide{margin:30px 0 0;aspect-ratio:4/3;position:relative}
-.wide::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--bg),transparent 20%,transparent 70%,var(--bg))}
-footer{padding:20px 20px 150px;text-align:center;color:#7d715e;font-size:13px}
-
-/* Dock */
-.dock{position:fixed;z-index:50;bottom:0;inset-inline:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));display:flex;gap:10px;background:linear-gradient(transparent,rgba(13,11,8,.94) 30%)}
-.wa{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;border-radius:99px;background:var(--wa);color:#05290f;text-decoration:none;box-shadow:0 8px 28px rgba(37,211,102,.35);line-height:1.25}
-.wa svg{width:26px;height:26px;fill:#05290f;flex:0 0 26px}
-.wa .t{display:flex;flex-direction:column;align-items:center}
-.wa .t b{font-weight:800;font-size:18px}
-.wa .t small{font-size:13px;font-weight:700;opacity:.85}
-.call{flex:0 0 58px;height:58px;border-radius:99px;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;background:rgba(13,11,8,.7)}
-.call svg{width:24px;height:24px;stroke:var(--gold2);fill:none;stroke-width:1.8}
-
-/* Full gallery */
-.sheet{position:fixed;inset:0;z-index:40;background:var(--bg);overflow-y:auto;display:none}
-.sheet.open{display:block}
-.sheet-top{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:14px 16px;background:rgba(13,11,8,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.sheet-top b{font-family:"El Messiri";font-size:21px;color:var(--gold2)}
-.x{width:40px;height:40px;border-radius:99px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center}
-.x svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.2}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 16px;scrollbar-width:none;position:sticky;top:69px;z-index:2;background:var(--bg)}
-.tabs::-webkit-scrollbar{display:none}
-.tabs a{flex:0 0 auto;text-decoration:none;font-size:14px;font-weight:700;border:1px solid #3a2f20;border-radius:99px;padding:5px 13px;color:var(--gold2)}
-.grp{padding:8px 16px 18px}
-.grp h3{font-family:"El Messiri";font-size:21px;color:#fff;margin:6px 0 10px;scroll-margin-top:130px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.grid button{aspect-ratio:1/1;border-radius:12px;overflow:hidden}
-.grid button:first-child{grid-column:span 2;aspect-ratio:16/10}
-.sheet .pad{height:110px}
-
-/* Viewer */
-.viewer{position:fixed;inset:0;z-index:60;background:#000;display:none;flex-direction:column}
-.viewer.open{display:flex}
-.vtrack{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-.vtrack::-webkit-scrollbar{display:none}
-.vtrack figure{flex:0 0 100%;scroll-snap-align:center;display:flex;flex-direction:column;justify-content:center}
-.vtrack img{height:auto;max-height:78svh;object-fit:contain}
-.vtrack figcaption{text-align:center;color:#e4dccd;font-size:15px;padding:12px}
-.vbar{display:flex;justify-content:space-between;align-items:center;padding:14px 16px}
-.vbar .count{background:rgba(255,255,255,.12)}
-@media (min-width:700px){body{max-width:520px;margin:0 auto;box-shadow:0 0 80px rgba(0,0,0,.6)}.dock,.sheet,.viewer{max-width:520px;margin:0 auto}}
+/* location */
+.loc{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.loc-img{border-radius:24px;overflow:hidden;height:420px}
+.map{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;text-decoration:none;color:var(--ink)}
+.map svg{flex:0 0 40px;height:40px;color:var(--am-icon)}
+.map div{flex:1;min-width:0}
+.map b{display:block;font-family:var(--head);font-size:19px}
+.map span{display:block;color:var(--muted);font-size:14.5px}
+.map .rate{color:var(--ink)}
+.map .rate i{font-style:normal;color:#e5a91c}
+.map em{flex-basis:100%;text-align:center;font-style:normal;font-weight:600;border:1.5px solid var(--outline);border-radius:999px;padding:9px 12px}
+@media (max-width:900px){.loc{grid-template-columns:1fr}.loc-img{height:280px}}
 </style>
 </head>
 <body>
 
-<header class="hero" aria-label="صور الاستراحة">
-  <div class="top">
-    <div class="logo">واحة نعمان<small>استراحة خاصة، وادي نعمان</small></div>
-    <button class="allbtn" data-open-all><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>كل الصور</button>
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><path d="M12 21V11"/><path d="M12 11c-1-3-4-5-8-4 2 1 3 2 4 4"/><path d="M12 11c1-3 4-5 8-4-2 1-3 2-4 4"/><path d="M12 11c-2-2-2-5 0-7 2 2 2 5 0 7"/></svg></span>
+      <span>واحة نعمان</span>
+    </a>
+    <nav class="nav">
+      <a href="#prices">الأسعار</a>
+      <a href="#pick">الأيام</a>
+      <a href="#gallery">الصور</a>
+      <a href="#location">الموقع</a>
+      <button class="theme" id="themeBtn" type="button" aria-label="فاتح أو داكن"></button>
+      <a class="btn btn-wa" data-wa href="https://wa.me/966531484424">احجز</a>
+    </nav>
   </div>
-  <div class="track" id="track"></div>
-  <button class="arrow prev" id="prev" aria-label="الصورة السابقة"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
-  <button class="arrow next" id="next" aria-label="الصورة التالية"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
-  <div class="hint" id="hint"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>اسحب وشوف المكان</div>
-  <div class="meta"><span class="cap" id="cap"></span><span class="count" id="count"></span></div>
 </header>
-<div class="thumbs" id="thumbs" aria-label="مصغرات الصور"></div>
 
-<div class="intro">
-  <div class="eyebrow">وادي نعمان، طريق مكة الطائف</div>
-  <h1>سهرتكم الخاصة <span>وسط الخضرة والأنوار</span></h1>
-  <p>استراحة من قسمين بمسبح داخلي، مجلس خارجي واسع، فرن حطب وألعاب للأطفال. على بعد 22 دقيقة من العوالي</p>
-  <div class="chips"><span>قسمين</span><span>مسبح داخلي</span><span>مجلس خارجي</span><span>فرن حطب</span><span>ألعاب أطفال</span><span>حديقة مضاءة</span></div>
-  <div class="prices" aria-label="الأسعار"><div><span>الاستراحة كاملة</span><b>500 <small>ريال</small></b></div><div><span>قسم واحد</span><b>300 <small>ريال</small></b></div></div>
-  <button class="share" id="share"><svg viewBox="0 0 24 24"><path d="M4 12v8h16v-8M16 6l-4-4-4 4M12 2v13"/></svg>أرسل المكان لأهلك</button>
-</div>
-
-<section id="pick">
-  <h2>اختر يومك</h2>
-  <p class="sub">اسحب واختر يومك، وبعدها اضغط زر واتساب</p>
-  <p class="breaknote" id="breaknote" hidden></p>
-  <div class="days" id="days" role="listbox" aria-label="الأيام"></div>
-  <div class="legend"><span><i class="lw"></i>نهاية الأسبوع (الخميس والجمعة)</span><span><i class="lb"></i>إجازة الخريف</span></div>
-  <p class="picked" id="picked"></p>
-</section>
-
-<section>
-  <h2>كل اللي تحتاجه جمعتكم</h2>
-  <p class="sub">صور حقيقية من الاستراحة</p>
-  <div class="feats">
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M2 18c2 0 2-1.5 4-1.5S8 18 10 18s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M2 14c2 0 2-1.5 4-1.5S8 14 10 14s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5M8 11V5a2 2 0 0 1 4 0M16 11V5a2 2 0 0 0-4 0"/></svg><b>مسبح داخلي</b><span>مغطى ومضاء</span></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12M3 21h18M12 21v-7"/></svg><b>قسمين</b><span>مساحة لجمعتكم كاملة</span></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M3 20h18M5 20v-6a7 7 0 0 1 14 0v6M9 20v-4h6v4M12 4v3"/></svg><b>فرن حطب</b><span>جنب الجلسات الخارجية</span></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M4 21V5h16v16M4 5l4 6h8l4-6M10 11v6M14 11v6"/></svg><b>ألعاب أطفال</b><span>مراجيح وزحليقة ونطيطة</span></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M3 18h18M5 18v-5h14v5M7 13V9h10v4"/></svg><b>مجلس خارجي واسع</b><span>جلسة أرضية مظللة</span></div>
-    <div class="feat"><svg viewBox="0 0 24 24"><path d="M12 3v2M5 7l1.5 1.5M19 7l-1.5 1.5M8 14a4 4 0 1 1 8 0c0 2-2 3-2 5h-4c0-2-2-3-2-5Z"/></svg><b>حديقة مضاءة</b><span>أنوار ملونة بالليل</span></div>
+<section class="hero" id="hero" style="padding:0">
+  <div class="slides" id="slides"></div>
+  <div class="dots" id="dots"></div>
+  <div class="hero-in">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--gold)">وادي نعمان، طريق مكة الطائف</span>
+      <h1 class="hero-lines" id="heroLines"></h1>
+      <p class="lead">استراحة من قسمين بمسبح داخلي، مجلس خارجي، فرن حطب وألعاب أطفال</p>
+      <div class="hero-cta">
+        <a class="btn btn-wa" data-wa href="https://wa.me/966531484424"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></svg><span>احجز على واتساب</span></a>
+        <a class="btn btn-ghost" href="#gallery">كل الصور</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section>
-  <h2>الصور حسب المكان</h2>
-  <p class="sub">اضغط على أي قسم وشوف صوره</p>
-  <div class="cats" id="cats"></div>
+<section id="prices">
+  <div class="wrap">
+    <div class="sec-head"><h2>الأسعار</h2></div>
+    <div class="prices">
+      <div class="price"><span>الاستراحة كاملة</span><b>500<small>ريال</small></b><a class="btn btn-dark" data-wa="الاستراحة كاملة" href="https://wa.me/966531484424">احجز</a></div>
+      <div class="price"><span>قسم واحد</span><b>300<small>ريال</small></b><a class="btn btn-dark" data-wa="قسم واحد" href="https://wa.me/966531484424">احجز</a></div>
+    </div>
+    <button class="btn btn-line share" id="share" type="button">أرسل المكان لأهلك</button>
+  </div>
 </section>
 
-<section id="infosec" hidden>
-  <h2>معلومات الحجز</h2>
-  <p class="sub">أهم اللي يسأل عنه الضيوف</p>
-  <div class="info" id="info"></div>
+<section id="pick" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:18px"><h2>اختر يومك</h2></div>
+    <p class="note" id="breaknote" hidden></p>
+    <div class="days" id="days" role="listbox" aria-label="الأيام"></div>
+    <div class="legend"><span><i class="lw"></i>نهاية الأسبوع</span><span><i class="lb"></i>إجازة الخريف</span></div>
+    <p class="picked" id="picked"></p>
+  </div>
 </section>
 
-<section>
-  <h2>كيف أحجز؟</h2>
-  <p class="sub">بدون تطبيقات وبدون تسجيل</p>
-  <div class="steps"><div>اختر يومك من فوق</div><div>اضغط «احجز على واتساب»</div><div>نأكد لك اليوم ونثبت الحجز</div></div>
+<section class="amen" id="amenities">
+  <div class="wrap">
+    <div class="sec-head"><h2>المرافق</h2></div>
+    <div class="am-grid"><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 16c2 0 2-1.5 4-1.5S8 16 10 16s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M2 20c2 0 2-1.5 4-1.5S8 20 10 20s2-1.5 4-1.5 2 1.5 4 1.5 2-1.5 4-1.5"/><path d="M7 13V5a2 2 0 0 1 4 0M13 13V5a2 2 0 0 1 4 0M7 8h6M7 11h6"/></svg><b>مسبح داخلي</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 21V9l9-6 9 6v12M3 21h18M12 21v-7"/></svg><b>قسمين</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 18v-6a2 2 0 0 1 4 0v2h10v-2a2 2 0 0 1 4 0v6Z"/><path d="M5 10V8a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v2M5 18v2M19 18v2"/></svg><b>مجالس</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-6 1-9Z"/></svg><b>فرن حطب</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 21 8 3h8l4 18M6 12h12"/><path d="M10 12v5h4v-5"/></svg><b>ألعاب أطفال</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10Z"/></svg><b>ملعب كرة</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v2M5 7l1.5 1.5M19 7l-1.5 1.5M8 14a4 4 0 1 1 8 0c0 2-2 3-2 5h-4c0-2-2-3-2-5Z"/></svg><b>حديقة مضاءة</b></div><div class="am"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="m3 20 6-11 4 6 3-4 5 9Z"/><circle cx="17" cy="5" r="2"/></svg><b>إطلالة جبلية</b></div></div>
+  </div>
 </section>
 
-<section>
-  <h2>الموقع</h2>
-  <p class="sub">على طريق مكة الطائف، 22 دقيقة من العوالي</p>
-  <a class="map" href="https://maps.app.goo.gl/sGc1dh95pKmLxMgZ7" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-    <div><b>منتجعات واحة نعمان</b><span>وادي نعمان، مكة المكرمة</span><span class="rate"><i>★</i> 5.0 · تقييمين على خرائط قوقل</span></div>
-    <em>افتح الخريطة</em>
-  </a>
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head"><h2>الصور</h2></div>
+    <div class="filters" id="filters"></div>
+    <div class="bento" id="bento"></div>
+    <div class="gal-foot"><button class="btn btn-line" id="allBtn" type="button"></button></div>
+  </div>
 </section>
 
-<div class="wide"><img src="img/patio-dusk.jpg" alt="الحوش والجلسات وقت المغرب" loading="lazy"></div>
-<footer>واحة نعمان · 0531484424</footer>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><h2>لكل مناسبة</h2></div>
+    <div class="occ">
+      <div class="oc"><img class="fp" src="img/palm-majlis-sm.jpg" alt="" loading="lazy" style="--fx:50%"><div><h3>جمعات عائلية</h3></div></div>
+      <div class="oc"><img class="fp" src="img/villa-majlis-sm.jpg" alt="" loading="lazy" style="--fx:62%"><div><h3>مناسبات</h3></div></div>
+      <div class="oc"><img class="fp" src="img/villa-night-sm.jpg" alt="" loading="lazy" style="--fx:36%"><div><h3>سهرات</h3></div></div>
+    </div>
+  </div>
+</section>
 
-<nav class="dock">
-  <a class="wa" id="wa" href="https://wa.me/966531484424"><svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></svg><span class="t"><b>احجز على واتساب</b><small id="waday" hidden></small></span></a>
-  <a class="call" href="tel:+966531484424" aria-label="اتصال"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2Z"/></svg></a>
-</nav>
+<section class="book" id="book">
+  <img class="fp" src="img/terrace-day.jpg" alt="" loading="lazy" style="--fx:30%;--fy:55%">
+  <div class="wrap book-in">
+    <h2>احجز الآن</h2>
+    <p>أرسل يومك وعدد الضيوف</p>
+    <div class="hero-cta">
+      <a class="btn btn-wa" data-wa href="https://wa.me/966531484424"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></svg><span>احجز على واتساب</span></a>
+      <a class="btn btn-ghost" data-call href="tel:+966531484424">اتصل 0531484424</a>
+    </div>
+  </div>
+</section>
 
-<div class="sheet" id="sheet" role="dialog" aria-label="كل الصور">
-  <div class="sheet-top"><b>كل الصور</b><button class="x" data-close-sheet aria-label="إغلاق"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div class="tabs" id="tabs"></div>
-  <div id="groups"></div>
-  <div class="pad"></div>
+<section id="location">
+  <div class="wrap loc">
+    <div>
+      <div class="sec-head" style="margin-bottom:18px"><h2>الموقع</h2><p>طريق مكة الطائف، 22 دقيقة من العوالي</p></div>
+      <a class="map" href="https://maps.app.goo.gl/sGc1dh95pKmLxMgZ7" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <div><b>منتجعات واحة نعمان</b><span>وادي نعمان، مكة المكرمة</span><span class="rate"><i>★</i> 5.0 · تقييمين على خرائط قوقل</span></div>
+        <em>افتح الخريطة</em>
+      </a>
+    </div>
+    <div class="loc-img"><img class="fp" src="img/villa-courtyard.jpg" alt="الساحة" loading="lazy" style="--fx:45%"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">واحة نعمان</span>
+    <span>واحة نعمان · 0531484424</span>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn call" data-call href="tel:+966531484424" aria-label="اتصال"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a>
+  <a class="btn btn-wa" data-wa href="https://wa.me/966531484424"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.42-.08-.12-.27-.2-.57-.34m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></svg><span>احجز على واتساب</span></a>
 </div>
 
-<div class="viewer" id="viewer" role="dialog" aria-label="عرض الصورة">
-  <div class="vbar"><span class="count" id="vcount"></span><button class="x" data-close-viewer aria-label="إغلاق"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <div class="vtrack" id="vtrack"></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <div class="lb-top"><span id="lbCount"></span><button type="button" id="lbClose" aria-label="إغلاق">✕</button></div>
+  <div class="lb-stage" id="lbStage">
+    <button class="prev" type="button" id="lbPrev" aria-label="السابقة">‹</button>
+    <img id="lbImg" alt="">
+    <button class="next" type="button" id="lbNext" aria-label="التالية">›</button>
+  </div>
+  <div class="lb-cap" id="lbCap"></div>
 </div>
 
 <script>
 (function(){
 var PHONE='966531484424';
-var P=[
- ['palm-night','جلسة النخلة بالليل','garden'],
- ['pool-blue','المسبح الداخلي','pool'],
- ['patio-dusk','الحوش والجلسات','garden'],
- ['majlis-out','المجلس الخارجي المظلل','majlis'],
- ['rock-lights','الجبل المضاء بالليل','garden'],
- ['pool-stone','المسبح الداخلي','pool'],
- ['garden-lights','الحديقة بالأنوار','garden'],
- ['majlis-in','المجلس الداخلي','majlis'],
- ['oven','فرن الحطب','majlis'],
- ['house-dusk','الاستراحة وقت المغرب','garden'],
- ['swing','ركن الأرجوحة','garden'],
- ['majlis-red','الجلسة الخارجية','majlis'],
- ['sofas','الصالة','majlis'],
- ['garden-dusk','الحديقة وقت المغرب','garden'],
- ['bedroom','غرفة النوم','inside'],
- ['kitchen','المطبخ','inside']
-];
-// ?p=pool / ?p=majlis / ?p=garden on the ad link: the page opens on the same kind of photo the ad showed
-var PA=(new URLSearchParams(location.search).get('p')||'').toLowerCase();
-if(PA)P=P.filter(function(p){return p[2]===PA}).concat(P.filter(function(p){return p[2]!==PA}));
-var G=[['pool','المسبح'],['majlis','المجالس والجلسات'],['garden','الحديقة والسهرة'],['inside','الداخل']];
 var $=function(id){return document.getElementById(id)};
-function center(box,el){var a=el.getBoundingClientRect(),b=box.getBoundingClientRect();box.scrollBy({left:(a.left+a.width/2)-(b.left+b.width/2),behavior:'smooth'})}
-var track=$('track'),thumbs=$('thumbs'),N=P.length,cur=0;
 
-P.forEach(function(p,i){
-  var s=document.createElement('div');s.className='slide';
-  s.innerHTML='<img src="img/'+p[0]+'.jpg" alt="'+p[1]+'"'+(i>1?' loading="lazy"':'')+'>';
-  track.appendChild(s);
-  var t=document.createElement('button');t.setAttribute('aria-label',p[1]);
-  t.innerHTML='<img src="thumb/'+p[0]+'.jpg" alt="" loading="lazy">';
-  t.onclick=function(){go(i)};thumbs.appendChild(t);
+/* Photos: name, kind, focal point x/y, caption */
+var P=[
+ ['pool-night','pool',50,60,'المسبح الداخلي'],
+ ['palm-majlis','out',50,60,'مجلس النخيل'],
+ ['villa-night','out',38,55,'الساحة بالليل'],
+ ['villa-majlis','in',58,55,'المجلس'],
+ ['daybed','out',60,60,'الكنبة'],
+ ['tent-majlis','out',42,55,'المجلس الخارجي'],
+ ['pool-lounge','pool',35,60,'جانب المسبح'],
+ ['terrace-day','out',30,55,'فرن الحطب'],
+ ['garden-swing','kids',20,60,'المراجيح'],
+ ['villa-courtyard','out',42,50,'الساحة بالنهار'],
+ ['football','kids',50,55,'الملعب'],
+ ['villa-living','in',50,55,'الصالة'],
+ ['garden-hill','out',50,55,'الحديقة'],
+ ['garden-majlis','in',50,55,'المجلس الداخلي'],
+ ['outdoor-kitchen','out',45,55,'المطبخ الخارجي'],
+ ['villa-day','out',45,50,'الاستراحة'],
+ ['oven-stage','out',50,55,'جلسة الفرن'],
+ ['garden-majlis-blue','in',50,50,'مجلس الضيوف'],
+ ['terrace-night','out',45,55,'الجلسة بالليل'],
+ ['villa-kitchen','in',40,55,'المطبخ'],
+ ['garden-living','in',45,55,'الصالة'],
+ ['garden-lounge','in',58,55,'التلفاز'],
+ ['garden-entrance','out',35,55,'المدخل'],
+ ['garden-kitchen','in',50,55,'المطبخ'],
+ ['villa-bedroom','in',68,55,'غرفة النوم'],
+ ['garden-bedroom','in',55,55,'غرفة النوم'],
+ ['villa-majlis-wide','in',45,55,'المجلس']
+];
+/* Hero: 8 photos, one short line each, changes every 2 seconds. Pool first. */
+var HERO=[
+ ['pool-night',50,62,'مسبح داخلي','pool'],
+ ['palm-majlis',50,60,'مجلس تحت النخيل','majlis'],
+ ['villa-night',36,55,'أنوار الليل','garden'],
+ ['villa-majlis',58,55,'مجلس للعائلة','majlis'],
+ ['daybed',60,60,'سهرة هادئة','garden'],
+ ['terrace-day',28,55,'فرن حطب وجبال','majlis'],
+ ['tent-majlis',42,55,'مجلس للمناسبات','majlis'],
+ ['garden-swing',18,60,'ألعاب للأطفال','garden']
+];
+var Q=new URLSearchParams(location.search);
+// ?p=pool / ?p=majlis / ?p=garden on the ad link: the page opens on the same kind of photo the ad showed
+var PA=(Q.get('p')||'').toLowerCase();
+if(PA)HERO=HERO.filter(function(h){return h[4]===PA}).concat(HERO.filter(function(h){return h[4]!==PA}));
+
+/* Hero slideshow */
+var slides=$('slides'),dots=$('dots'),lines=$('heroLines'),cur=0,timer;
+HERO.forEach(function(h,i){
+  var s=document.createElement('div');s.className='slide'+(i?'':' on');
+  s.innerHTML='<img class="fp" src="img/'+h[0]+'.jpg" alt="'+h[3]+'" style="--fx:'+h[1]+'%;--fy:'+h[2]+'%"'+(i?'':' fetchpriority="high"')+'>';
+  slides.appendChild(s);
+  var l=document.createElement('span');l.textContent=h[3];if(!i)l.className='on';lines.appendChild(l);
+  var d=document.createElement('button');d.type='button';d.setAttribute('aria-label',h[3]);if(!i)d.className='on';d.onclick=function(){go(i,true)};dots.appendChild(d);
 });
-function setCur(i){
-  cur=i;$('count').textContent=(i+1)+' / '+N;$('cap').textContent=P[i][1];
-  [].forEach.call(thumbs.children,function(b,j){b.classList.toggle('on',j===i)});
-  var tb=thumbs.children[i];if(tb)center(thumbs,tb);
-  if(i>0)$('hint').classList.add('gone');
+function go(i,user){[slides,lines,dots].forEach(function(c){c.children[cur].classList.remove('on')});cur=i;[slides,lines,dots].forEach(function(c){c.children[cur].classList.add('on')});if(user)restart()}
+function restart(){clearInterval(timer);timer=setInterval(function(){go((cur+1)%HERO.length)},2000)}
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)restart();
+window.__hero={stop:function(){clearInterval(timer)},go:go};
+
+/* Gallery */
+var SHAPES_D=['big','tall','','','','wide','tall','wide',''],SHAPES_M=['big','tall','','','wide','',''];
+var CATS=[['all','الكل'],['pool','المسبح'],['out','الخارج'],['in','الداخل'],['kids','الأطفال']];
+var cat='all',list=[],bento=$('bento'),filters=$('filters'),allBtn=$('allBtn');
+function renderGallery(){
+  filters.innerHTML=CATS.map(function(c){return '<button class="filter'+(c[0]===cat?' on':'')+'" data-c="'+c[0]+'" type="button">'+c[1]+'</button>'}).join('');
+  list=P.filter(function(p){return cat==='all'||p[1]===cat});
+  var SH=innerWidth<700?SHAPES_M:SHAPES_D,show=cat==='all'?list.slice(0,SH.length):list;
+  bento.innerHTML=show.map(function(p,i){var sh=SH[i%SH.length];
+    return '<button class="tile '+sh+'" data-i="'+i+'" type="button"><img class="fp" src="img/'+p[0]+'-sm.jpg" srcset="img/'+p[0]+'-sm.jpg 720w, img/'+p[0]+'.jpg 1600w" sizes="'+(sh==='big'||sh==='wide'?'(max-width:700px) 100vw, 600px':'(max-width:700px) 50vw, 300px')+'" alt="'+p[4]+'" loading="lazy" style="--fx:'+p[2]+'%;--fy:'+p[3]+'%"><figcaption>'+p[4]+'</figcaption></button>'}).join('');
+  allBtn.textContent='كل الصور ('+P.length+')';
 }
-function go(i){var far=Math.abs(i-cur)>1||i<0||i>=N;i=(i+N)%N;var s=track.children[i];track.scrollTo({left:s.offsetLeft,behavior:far?'auto':'smooth'});}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&e.intersectionRatio>.6)setCur([].indexOf.call(track.children,e.target))})},{root:track,threshold:[.6]});
-[].forEach.call(track.children,function(s){io.observe(s)});
-$('next').onclick=function(){go(cur+1)};$('prev').onclick=function(){go(cur-1)};
-track.addEventListener('scroll',function(){$('hint').classList.add('gone')},{passive:true});
-setTimeout(function(){$('hint').classList.add('gone')},6000);
-setCur(0);
+filters.onclick=function(e){var b=e.target.closest('.filter');if(!b)return;cat=b.dataset.c;renderGallery()};
+bento.onclick=function(e){var b=e.target.closest('.tile');if(b)openLB(list,+b.dataset.i)};
+allBtn.onclick=function(){openLB(P,0)};
+var rz;addEventListener('resize',function(){clearTimeout(rz);rz=setTimeout(renderGallery,200)});
+renderGallery();
 
-// Areas on the page
-var cats=$('cats');
-G.forEach(function(g,k){
-  var items=P.filter(function(p){return p[2]===g[0]});
-  var b=document.createElement('button');b.className='cat'+(k===0||k===G.length-1?' big':'');
-  b.innerHTML='<img src="img/'+items[0][0]+'.jpg" alt="'+g[1]+'" loading="lazy"><span class="cnt">'+(items.length===2?'صورتين':items.length+' صور')+'</span><span class="lbl">'+g[1]+'</span>';
-  b.onclick=function(){openSheet(g[0])};cats.appendChild(b);
-});
+/* Full-screen photo viewer: every photo uncropped */
+var lb=$('lb'),lbImg=$('lbImg'),L=[],li=0;
+function openLB(a,i){L=a;li=i;showLB();lb.classList.add('open');document.body.style.overflow='hidden'}
+function showLB(){var p=L[li];lbImg.src='img/'+p[0]+'.jpg';lbImg.alt=$('lbCap').textContent=p[4];$('lbCount').textContent=(li+1)+' / '+L.length;
+  [li+1,li-1].forEach(function(k){var q=L[(k+L.length)%L.length];if(q)new Image().src='img/'+q[0]+'.jpg'})}
+function step(d){li=(li+d+L.length)%L.length;showLB()}
+function closeLB(){lb.classList.remove('open');document.body.style.overflow=''}
+$('lbNext').onclick=function(){step(-1)};$('lbPrev').onclick=function(){step(1)};$('lbClose').onclick=closeLB;
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.id==='lbStage')closeLB()});
+addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1)});
+var sx=null,st=$('lbStage');
+st.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+st.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)step(dx<0?1:-1);sx=null});
 
-// Full gallery sheet
-var sheet=$('sheet'),groups=$('groups'),tabs=$('tabs'),order=[];
-G.forEach(function(g){
-  var items=P.filter(function(p){return p[2]===g[0]});
-  var a=document.createElement('a');a.href='#g-'+g[0];a.textContent=g[1];
-  a.onclick=function(e){e.preventDefault();$('g-'+g[0]).scrollIntoView({behavior:'smooth'})};tabs.appendChild(a);
-  var d=document.createElement('div');d.className='grp';
-  d.innerHTML='<h3 id="g-'+g[0]+'">'+g[1]+'</h3><div class="grid"></div>';
-  var grid=d.querySelector('.grid');
-  items.forEach(function(p){var idx=order.length;order.push(p);
-    var b=document.createElement('button');b.setAttribute('aria-label',p[1]);
-    b.innerHTML='<img src="img/'+p[0]+'.jpg" alt="'+p[1]+'" loading="lazy">';
-    b.onclick=function(){openViewer(idx)};grid.appendChild(b)});
-  groups.appendChild(d);
-});
-function lock(on){document.documentElement.style.overflow=on?'hidden':''}
-function openSheet(g){sheet.classList.add('open');lock(true);sheet.scrollTop=0;if(g)setTimeout(function(){$('g-'+g).scrollIntoView()},30);history.pushState({s:1},'')}
-function closeSheet(){sheet.classList.remove('open');lock(false)}
-document.querySelector('[data-open-all]').onclick=function(){openSheet()};
-document.querySelector('[data-close-sheet]').onclick=function(){history.back()};
-
-// Viewer
-var viewer=$('viewer'),vtrack=$('vtrack');
-order.forEach(function(p){var f=document.createElement('figure');f.innerHTML='<img src="img/'+p[0]+'.jpg" alt="'+p[1]+'" loading="lazy"><figcaption>'+p[1]+'</figcaption>';vtrack.appendChild(f)});
-var vio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)$('vcount').textContent=([].indexOf.call(vtrack.children,e.target)+1)+' / '+order.length})},{root:vtrack,threshold:.6});
-[].forEach.call(vtrack.children,function(f){vio.observe(f)});
-function openViewer(i){viewer.classList.add('open');var f=vtrack.children[i];vtrack.scrollTo({left:f.offsetLeft});$('vcount').textContent=(i+1)+' / '+order.length;history.pushState({v:1},'')}
-document.querySelector('[data-close-viewer]').onclick=function(){history.back()};
-window.addEventListener('popstate',function(){if(viewer.classList.contains('open')){viewer.classList.remove('open')}else if(sheet.classList.contains('open')){closeSheet()}});
-
-// Days (Riyadh time, UTC+3)
+/* Days (Riyadh time, UTC+3). Picking a day is optional; it is added to the WhatsApp message. */
 var DN=['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
 var MN=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
-var now=new Date(Date.now()+3*3600*1000);
-var base=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
+var now=new Date(Date.now()+3*3600*1000),base=Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate());
 var days=$('days'),picked=null;
-// Real bookings only, from the owner (YYYY-MM-DD). Never mark a free day as booked.
-var BOOKED=[];
 var BREAK_START=Date.UTC(2026,10,20),BREAK_END=Date.UTC(2026,10,28);
-function isBreak(d){var t=d.getTime();return t>=BREAK_START&&t<=BREAK_END}
-function iso(d){return d.toISOString().slice(0,10)}
 for(var k=0;k<41;k++){
-  var d=new Date(base+k*86400000);
+  var d=new Date(base+k*86400000),t=d.getTime();
   var name=k===0?'اليوم':(k===1?'بكرة':DN[d.getUTCDay()]);
   var full=DN[d.getUTCDay()]+' '+d.getUTCDate()+' '+MN[d.getUTCMonth()];
-  var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=isBreak(d),bk=BOOKED.indexOf(iso(d))>-1;
-  var b=document.createElement('button');b.className='day'+(br?' br':(wk?' wk':''))+(bk?' full':'');b.setAttribute('role','option');b.dataset.full=full;
-  if(bk){b.disabled=true;b.setAttribute('aria-disabled','true')}
-  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(bk?'<span class="tag x">محجوز</span>':(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':'')));
+  var wk=d.getUTCDay()===4||d.getUTCDay()===5,br=t>=BREAK_START&&t<=BREAK_END;
+  var b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('role','option');b.dataset.full=full;
+  b.innerHTML='<b>'+name+'</b><span class="n">'+d.getUTCDate()+'</span><span class="m">'+MN[d.getUTCMonth()]+'</span>'+(br?'<span class="tag">إجازة الخريف</span>':(wk?'<span class="tag w">نهاية الأسبوع</span>':''));
   days.appendChild(b);
 }
-// Break countdown (true dates only)
 var left=Math.round((BREAK_START-base)/86400000),bn=$('breaknote');
-if(left>1){bn.innerHTML='إجازة الخريف تبدأ <b>الجمعة 20 نوفمبر</b>، بعد '+(left<=10?left+' أيام':left+' يوم')+'. احجز يومك بدري';bn.hidden=false}
-else if(left===1){bn.innerHTML='إجازة الخريف تبدأ <b>بكرة</b>. احجز يومك الحين';bn.hidden=false}
+if(left>1){bn.innerHTML='إجازة الخريف تبدأ <b>الجمعة 20 نوفمبر</b>، احجز يومك بدري';bn.hidden=false}
+else if(left===1){bn.innerHTML='إجازة الخريف تبدأ <b>بكرة</b>، احجز يومك الحين';bn.hidden=false}
 else if(base<=BREAK_END){bn.innerHTML='إجازة الخريف <b>الحين</b> لين السبت 28 نوفمبر';bn.hidden=false}
 days.addEventListener('click',function(e){
-  var b=e.target.closest('.day');if(!b||b.disabled)return;
+  var b=e.target.closest('.day');if(!b)return;
+  var again=b.classList.contains('on');
   [].forEach.call(days.children,function(x){x.classList.remove('on');x.setAttribute('aria-selected','false')});
-  b.classList.add('on');b.setAttribute('aria-selected','true');center(days,b);
-  picked=b.dataset.full||null;render();
+  picked=again?null:b.dataset.full;
+  if(!again){b.classList.add('on');b.setAttribute('aria-selected','true')}
+  $('picked').innerHTML=picked?'اخترت <b>'+picked+'</b>، اضغط زر واتساب':'';
+  setLinks();
 });
-// Where the visitor came from, so each booking message tells which ad brought it:
-// ?src=snap (Snapchat), ?src=google (Google search), ?src=gdg (Google picture ads on YouTube, Discover, Gmail)
-var SRC=(new URLSearchParams(location.search).get('src')||'').toLowerCase();
+
+/* WhatsApp: same message as before, plus the day and the section when chosen.
+   ?src=snap (Snapchat), ?src=google (Google search), ?src=gdg (Google picture ads) tells which ad brought the booking */
+var SRC=(Q.get('src')||'').toLowerCase();
 var SEEN={snap:'شفت إعلانكم في سناب',google:'شفت إعلانكم في قوقل',gdg:'شفت إعلانكم'}[SRC]||'شفت موقعكم';
-function msg(){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(picked?' يوم '+picked:'، وش الأيام المتاحة؟')}
-// Share with family (decisions are made as a group)
+function msg(part){return 'السلام عليكم، '+SEEN+' وأبي أحجز في واحة نعمان'+(part?' ('+part+')':'')+(picked?' يوم '+picked:'، وش الأيام المتاحة؟')}
+function setLinks(){[].forEach.call(document.querySelectorAll('[data-wa]'),function(a){a.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg(a.dataset.wa))})}
+setLinks();
+
+/* Share with family (decisions are made as a group) */
 var SHARE_URL='https://binnawasx.github.io/wahatnuman/';
-// Short line only (Hussam, 15 Nov: "just say check out this estraha")
 $('share').onclick=function(){
   var t='شوف هالاستراحة';
   if(navigator.share){navigator.share({text:t,url:SHARE_URL}).catch(function(){})}
   else{window.open('https://wa.me/?text='+encodeURIComponent(t+'\n'+SHARE_URL),'_blank')}
 };
-function render(){
-  var wa=$('wa'),w=$('waday'),lbl=wa.querySelector('.t b');w.hidden=false;
-  if(picked){wa.classList.remove('off');wa.href='https://wa.me/'+PHONE+'?text='+encodeURIComponent(msg());lbl.textContent='احجز على واتساب';w.textContent=picked;$('picked').innerHTML='اخترت <b>'+picked+'</b>، اضغط زر واتساب تحت'}
-  else{wa.classList.add('off');wa.href='#pick';lbl.textContent='اختر يومك أول';w.textContent='من الأيام فوق';$('picked').textContent=''}
-}
-render();
-// Count WhatsApp and call taps on Snapchat and Google, so the ads learn who messages, not only who clicks.
-// IDs stay empty until the pixel/tag exists; nothing loads while they are empty.
+
+/* Ad tracking, unchanged from the previous site: count WhatsApp and call taps on Snapchat and Google.
+   Count the tap, then let the link open on its own in the same tap; never delay the link. */
 var TRACK={snapPixel:'f185b363-420b-4afc-aea3-3863f62ff061',snapEvent:'SIGN_UP',gads:'AW-18573574383',gadsLabel:'3HyUCMm6sbgdEO-ByZhF'};
 if(TRACK.snapPixel){(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function(){a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};a.queue=[];var s='script',r=t.createElement(s);r.async=!0;r.src=n;var u=t.getElementsByTagName(s)[0];u.parentNode.insertBefore(r,u)})(window,document,'https://sc-static.net/scevent.min.js');snaptr('init',TRACK.snapPixel);snaptr('track','PAGE_VIEW')}
 if(TRACK.gads){var gs=document.createElement('script');gs.async=true;gs.src='https://www.googletagmanager.com/gtag/js?id='+TRACK.gads;document.head.appendChild(gs);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',TRACK.gads)}
-// Count the tap, then let the link open WhatsApp or the dialler on its own, in the same tap.
-// Never block or delay the link: on iPhone and inside Snapchat's browser a delayed jump opens
-// the WhatsApp website («Continue to chat») instead of the app, and people drop off there.
 function tapped(how){
   try{if(TRACK.snapPixel)snaptr('track',TRACK.snapEvent,{description:how})}catch(x){}
   try{if(TRACK.gads&&TRACK.gadsLabel)gtag('event','conversion',{send_to:TRACK.gads+'/'+TRACK.gadsLabel,transport_type:'beacon',event_label:how})}catch(x){}
 }
-$('wa').addEventListener('click',function(){if(!this.classList.contains('off'))tapped('whatsapp')});
-document.querySelector('.call').addEventListener('click',function(){tapped('call')});
-// Facts from the owner. Leave null until confirmed; nothing shows for a null value. Never guess.
-var FACTS={priceFrom:null,checkin:null,checkout:null,maxGuests:null};
-var items=[];
-if(FACTS.priceFrom)items.push(['الأسعار تبدأ من',FACTS.priceFrom+' ريال']);
-if(FACTS.checkin)items.push(['الدخول',FACTS.checkin]);
-if(FACTS.checkout)items.push(['الخروج',FACTS.checkout]);
-if(FACTS.maxGuests)items.push(['يكفي حتى',FACTS.maxGuests+' شخص']);
-if(items.length){$('info').innerHTML=items.map(function(x){return '<div><span>'+x[0]+'</span><b>'+x[1]+'</b></div>'}).join('');$('infosec').hidden=false}
-if(FACTS.priceFrom){var pc=document.createElement('div');pc.className='price-chip';pc.textContent='من '+FACTS.priceFrom+' ريال لليلة';document.querySelector('.intro .chips').after(pc)}
+document.addEventListener('click',function(e){
+  if(e.target.closest('[data-wa]'))tapped('whatsapp');
+  else if(e.target.closest('[data-call]'))tapped('call');
+});
+
+/* Header, light/dark */
+var top_=$('top'),hero=$('hero');
+function onScroll(){top_.classList.toggle('solid',scrollY>40)}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+var themeBtn=$('themeBtn'),root=document.documentElement;
+function isDark(){return root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+function paintTheme(){themeBtn.textContent=isDark()?'\u2600':'\u263E'}
+try{var th=localStorage.getItem('theme');if(th)root.dataset.theme=th}catch(e){}
+themeBtn.onclick=function(){root.dataset.theme=isDark()?'light':'dark';try{localStorage.setItem('theme',root.dataset.theme)}catch(e){};paintTheme()};
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paintTheme);paintTheme();
 })();
 </script>
 </body>
